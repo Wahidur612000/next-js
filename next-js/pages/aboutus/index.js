@@ -16,7 +16,7 @@ function AboutUsPage() {
         {details.map((member) => (
           <li key={member.id}>
             <Link href={`/aboutus/${member.id}`}>
-              <a>{member.name} - {member.role}</a>
+              {member.name} - {member.role}
             </Link>
           </li>
         ))}

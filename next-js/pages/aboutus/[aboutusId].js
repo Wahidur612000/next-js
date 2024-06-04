@@ -1,6 +1,4 @@
-// pages/aboutus/[aboutusId].js
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 
 const details = [
   { id: 1, name: 'Yash', role: 'Senior Developer' },
@@ -10,25 +8,20 @@ const details = [
 
 function DetailPage() {
   const router = useRouter();
-  const  aboutusId  = router.query.aboutusId;
+  const aboutusId = parseInt(router.query.aboutusId);
 
-  const [member, setMember] = useState(null);
-
-  useEffect(() => {
-    if (aboutusId) {
-      const foundMember = details.find(m => m.id === parseInt(aboutusId));
-      setMember(foundMember);
-    }
-  }, [aboutusId]);
-
-  if (!member) {
-    return <h1>Developer doesn't exist</h1>;
-  }
+  const member = details.find((member) => member.id === aboutusId);
 
   return (
     <div>
-      <h1>{member.name}</h1>
-      <p>{member.role}</p>
+      {member ? (
+        <div>
+          <h1>{member.name}</h1>
+          <p>{member.role}</p>
+        </div>
+      ) : (
+        <h1>Member not found</h1>
+      )}
     </div>
   );
 }
