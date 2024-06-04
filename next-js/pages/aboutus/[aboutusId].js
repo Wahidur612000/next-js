@@ -10,17 +10,17 @@ function DetailPage() {
   const router = useRouter();
   const aboutusId = parseInt(router.query.aboutusId);
 
-  const member = details.find((member) => member.id === aboutusId);
+  const developer = details.find((developer) => developer.id === aboutusId);
 
   return (
     <div>
-      {member ? (
+      {developer ? (
         <div>
-          <h1>{member.name}</h1>
-          <p>{member.role}</p>
+          <h1>{developer.name}</h1>
+          <p>{developer.role}</p>
         </div>
       ) : (
-        <h1>Member not found</h1>
+        <h1>Developer not found</h1>
       )}
     </div>
   );
